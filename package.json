@@ -1,0 +1,27 @@
+{
+  "name": "myxios",
+  "version": "0.0.1",
+  "description": "description placeholder",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S2thend/myxios.git"
+  },
+  "keywords": [
+    "keywords",
+    "placeholder"
+  ],
+  "author": "borui cai",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/S2thend/myxios/issues"
+  },
+  "homepage": "https://github.com/S2thend/myxios#readme"
+}

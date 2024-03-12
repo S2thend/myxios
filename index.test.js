@@ -1,6 +1,6 @@
-const { HttpHandlerTest } = require('./index.js')
-const assert = require('node:assert')
-const { mock, test } = require('node:test')
+import { HttpHandlerTest, paramCarryPromise } from './index.js'
+import test from 'node:test';
+
 
 
 test('HttpHandlerTest', () => {
@@ -36,3 +36,8 @@ test('HttpHandlerTest', () => {
 
 })
 
+test('paramCarryPromise test', (t) => {
+    paramCarryPromise("hello", Promise.resolve("world")).then( 
+        res => assert.strictEqual(res, ["hello", "world"])
+    )
+});

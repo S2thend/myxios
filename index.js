@@ -1,8 +1,8 @@
-function paramCarryPromise (param, promise){
+export function paramCarryPromise (param, promise){
     return promise.then( res => Promise.resolve([ ...param, ...res ]) )
 }
 
-function HttpHandlerTest( fetch_req, url, options, interceptorfuncs ){
+export function HttpHandlerTest( fetch_req, url, options, interceptorfuncs ){
 
     interceptorfuncs.forEach((element) => Promise.resolve(element));
 
@@ -16,8 +16,4 @@ function HttpHandlerTest( fetch_req, url, options, interceptorfuncs ){
         },
         fetch_req
     )
-}
-
-module.exports= {
-    HttpHandlerTest
 }
