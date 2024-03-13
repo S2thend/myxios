@@ -4,6 +4,7 @@
   "description": "A modern, fetch based, axios inspired light-weight javascript request library",
   "main": "index.js",
   "type": "module",
+  "types": "index.d.ts",
   "directories": {
     "lib": "lib"
   },
