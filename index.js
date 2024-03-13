@@ -1,19 +1,13 @@
-export function paramCarryPromise (param, promise){
-    return promise.then( res => Promise.resolve([ ...param, ...res ]) )
-}
+import myxios from './lib/myxios.js';
 
-export function HttpHandlerTest( fetch_req, url, options, interceptorfuncs ){
+// This module is intended to unwrap default export as named.
+// Keep top-level export same with static properties
+// so that it can keep same with es module or cjs
+const {
+    Myxios,
+} = myxios;
 
-    interceptorfuncs.forEach((element) => Promise.resolve(element));
-
-    return interceptorfuncs.reduce(
-        (prev, cur)=>{
-            return prev.then(
-                data => {
-                    return paramCarryPromise(data, cur)
-                }
-            )
-        },
-        fetch_req
-    )
+export {
+    myxios as default,
+    Myxios,
 }

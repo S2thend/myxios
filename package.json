@@ -1,7 +1,7 @@
 {
   "name": "myxios",
   "version": "0.0.1",
-  "description": "description placeholder",
+  "description": "A modern, fetch based, axios inspired light-weight javascript request library",
   "main": "index.js",
   "type": "module",
   "directories": {

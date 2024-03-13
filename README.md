@@ -1,9 +1,11 @@
 # myxios
-
+A modern, fetch based, axios inspired light-weight javascript request library
 
 ## demo
 ```js
 const notAuthorizedInterceptor = (res) => {
+
+    res = res[0]
 
     const dispatch = store.dispatch
 
