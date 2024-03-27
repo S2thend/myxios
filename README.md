@@ -6,24 +6,35 @@
 
 A modern, fetch based, axios inspired light-weight javascript request library
 
-## demo
+It makes handling requests easy with the same api as fetch. It is super easy with those who are familiar with fetch.
+
+## examples
+
+### use a one time interceptor
+to refresh token is a common scene in frontend dev, 
+here we will use a jwt token refresh example for demo:
 ```js
+//import the module
+import myxios from "myxios"
+
+/**
+ * create a interceptor
+ * NOTE: return value of the interceptor must be thenable, 
+ * The fetch function is thenable
+ * For non-fetch return, here we will use Promise.resolve() to wrap our return value to make it thenable 
+ * res = res[0] is because by default myxios will keep all of the interceptors' response in sequence, here the 401 error will only come from first request 
+ */
 const notAuthorizedInterceptor = (res) => {
-
     res = res[0]
-
-    const dispatch = store.dispatch
-
-    let refresh = localStorage.getItem("refresh")
-
+    let refreshToken = localStorage.getItem("refresh")
     if (res.status === 401) {
-        if(refresh!==undefined){
+        if(refreshToken!==undefined){
             return fetch(
                 SERVER_URL + "/user/refresh",
                 {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer ' + localStorage.getItem('refresh')
+                        'Authorization': 'Bearer ' + refreshToken
                     }
                 }
             ).then(
@@ -31,7 +42,7 @@ const notAuthorizedInterceptor = (res) => {
                     if (res.status === 200) {
                         return res.json()
                     }else{
-                        logoutAndClean()(dispatch)
+                        logout()
                         alert("Session expired. Please login again.")
                         navigate("/login")
                     }
@@ -53,15 +64,37 @@ const notAuthorizedInterceptor = (res) => {
                     }
                 }
             )
-        
         }else{
-            logoutAndClean()(dispatch)
+            logout()
             alert("Session expired. Please login again.")
             navigate("/login")
         }
     }
-
     return Promise.resolve(res)
-
 }
+
+//only difference from fetch is a 3rd parameter for interceptors
+myxios.requestOneTimeIntercepts(
+    SERVER_URL + "/user/articles",
+    {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    },
+    [notAuthorizedInterceptor]
+).then(
+    res => {
+        res = res[1]
+        return res.json()
+    }
+).then(
+    json => {
+        if(json.articles){
+            setArticles(json.articles)
+        }
+    }
+).catch(
+    (e) => console.log(e) 
+)
 ```
