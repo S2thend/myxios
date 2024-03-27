@@ -1,5 +1,5 @@
 # myxios
-[![npm badge](https://img.shields.io/badge/npm-0.0.1-blue.svg)](https://www.npmjs.com/package/myxios)
+[![npm badge](https://img.shields.io/badge/npm-0.1.0-blue.svg)](https://www.npmjs.com/package/myxios)
 [![compatibility badge](https://img.shields.io/badge/compatibility->=ES6-blue.svg)](https://shields.io/)
 [![install_size badge](https://img.shields.io/badge/install_size-7.18_kB-blue.svg)](https://shields.io/)
 [![License badge](https://img.shields.io/badge/License-Apache2.0-<COLOR>.svg)](https://shields.io/)
