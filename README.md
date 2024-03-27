@@ -3,12 +3,13 @@
 [![compatibility badge](https://img.shields.io/badge/compatibility->=ES6-blue.svg)](https://shields.io/)
 [![install_size badge](https://img.shields.io/badge/install_size-7.18_kB-blue.svg)](https://shields.io/)
 [![License badge](https://img.shields.io/badge/License-Apache2.0-<COLOR>.svg)](https://shields.io/)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 A modern, fetch based, axios inspired light-weight javascript request library
 
 It makes handling requests easy with the same api as fetch. It is super easy with those who are familiar with fetch.
 
-## examples
+## Quick Examples
 
 ### use a one time interceptor
 to refresh token is a common scene in frontend dev, 
@@ -98,3 +99,8 @@ myxios.requestOneTimeIntercepts(
     (e) => console.log(e) 
 )
 ```
+
+## How to contribute
+Issues and PRs are welcomed.
+
+Please read the [contributing document](https://github.com/S2thend/myxios/blob/main/CONTRIBUTING.md).
