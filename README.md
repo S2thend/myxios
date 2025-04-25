@@ -1,5 +1,5 @@
 # myxios
-[![npm badge](https://img.shields.io/badge/npm-0.8.1-blue.svg)](https://www.npmjs.com/package/myxios)
+[![npm badge](https://img.shields.io/badge/npm-0.9.0-blue.svg)](https://www.npmjs.com/package/myxios)
 [![compatibility badge](https://img.shields.io/badge/compatibility->=ES6-blue.svg)](https://shields.io/)
 [![gzipped_size badge](https://img.shields.io/badge/gzipped_size-1.2_kB-red.svg)](https://shields.io/)
 [![License badge](https://img.shields.io/badge/License-Apache2.0-<COLOR>.svg)](https://shields.io/)
@@ -84,6 +84,7 @@ and add a handling logic for the case that the response is an array.
     const data = await response.json();
 ```
 ### access the original request parameters
+
 for use in retrying requests with same parameters
 ```js
 function customInterceptor(res){

@@ -1,6 +1,6 @@
 {
   "name": "myxios",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "A modern, fetch based, axios inspired light-weight javascript request library",
   "main": "dist/myxios.cjs.js",
   "module": "dist/myxios.esm.js",
