@@ -9,7 +9,82 @@ A modern, fetch based, axios inspired light-weight javascript request library
 
 It makes handling requests easy with the same api as fetch. It is super easy with those who are familiar with fetch.
 
-## Quick Examples
+## Quick Start Examples
+### Configure a myxios instance and use
+1. Create a file to configure the myxios instance
+    ```js
+    // utils/HttpHandler.js
+
+    // Create a shared instance in a separate file (e.g., api.js)
+    import myxios from "myxios"
+
+    // Create a single shared instance
+    export const myxiosInstance = myxios;
+
+    // Add your interceptor function
+    const notAuthorizedInterceptor = (res) => {
+        // ommited for brevity
+    }
+
+    // Add the interceptor to the shared instance
+    myxiosInstance.addResponseInterceptor(notAuthorizedInterceptor);
+
+    // Export the instance to use in all components
+    export default myxiosInstance;
+    ```
+2. Then import the instance in your component
+    ```js
+    import { myxiosInstance } from './utils/HttpHandler'
+
+    let response = await myxiosInstance.request(`http://example.com/api/data`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    //handle the case that the response is an array
+    if (Array.isArray(response)) {
+        response = response[response.length - 1];
+    }
+    if (!response.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    const data = await response.json();
+    ```
+
+### Migrate from fetch to myxios
+```js
+    const response = await fetch(`http://example.com/api/data`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    if (!response.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    const data = await response.json();
+```
+You only need to change the fetch to myxiosInstance.request,
+and add a handling logic for the case that the response is an array.
+```js
+    //import the module
+    import { myxios } from 'myxios'
+
+    let response = await myxios.request(`http://example.com/api/data`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    //handle the case that the response is an array
+    if (Array.isArray(response)) {
+        response = response[response.length - 1];
+    }
+    if (!response.ok) {
+        throw new Error('Failed to fetch data');
+    }
+    const data = await response.json();
+```
+
+
 
 ### use a one time interceptor
 to refresh token is a common scene in frontend dev, 
