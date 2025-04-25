@@ -18,6 +18,6 @@ export class Myxios {
 
 export function createInstance(response_interceptors?: Array<response_interceptor>): Myxios;
 
-declare function dispatchRequest(request: Promise<response>|Promise<Array<response>>, response_interceptors?: Array<response_interceptor>|Array<response_interceptor>): Promise<Array<response>>;
+declare function dispatchRequest(request: Promise<response>|Promise<Array<response>>, url: String, options?: Object, response_interceptors?: Array<response_interceptor>|Array<response_interceptor>): Promise<Array<response>>;
 
 declare function paramCarryPromise(param: response, promise: Promise<response>|Promise<Array<response>>,): Promise<Array<response>>;

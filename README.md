@@ -83,7 +83,36 @@ and add a handling logic for the case that the response is an array.
     }
     const data = await response.json();
 ```
+### access the original request parameters
+for use in retrying requests with same parameters
+```js
+function customInterceptor(res){
+    // omit details for brevity
 
+    // get the original request parameters from the first response
+    const originalRequset = res[0].request;
+    console.log("originalRequset:", originalRequset);
+
+    return fetch(
+        // omit details for brevity
+    ).then(
+        data => {
+            console.log("refresh:", data);
+                //
+                return fetch(
+                    originalRequest.url,
+                    {
+                        method: originalRequest.method,
+                        headers: {
+                            ...originalRequest.headers,
+                        },
+                        body: originalRequest.body
+                    }
+                );
+            }
+    );
+}
+```
 
 
 ### use a one time interceptor
